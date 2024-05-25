@@ -9,7 +9,7 @@ ENV INFLUX1_CLIENT_VERSION=1.8.0 \
     INFLUX2_CLIENT_VERSION=2.7.3 \
     MSODBC_VERSION=18.3.2.1-1 \
     MSSQL_VERSION=18.3.1.1-1 \
-    MYSQL_VERSION=mysql-8.4.0 \
+    MYSQL_VERSION=mysql-8.0.37 \
     MYSQL_REPO_URL=https://github.com/mysql/mysql-server \
     AWS_CLI_VERSION=1.32.113 \
     CONTAINER_ENABLE_MESSAGING=TRUE \
@@ -92,6 +92,8 @@ RUN source /assets/functions/00-container && \
     cmake \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DCMAKE_INSTALL_PREFIX=/opt/mysql \
+        -DDOWNLOAD_BOOST=1 \
+        -DWITH_BOOST=/usr/local/include \
         -DFORCE_INSOURCE_BUILD=1 \
         -DWITHOUT_SERVER:BOOL=ON \
         && \
